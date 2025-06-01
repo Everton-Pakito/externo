@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciclo Externo</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">  <!-- Adicionando o CSS -->
+</head>
+<body>
+    <h1>Ciclo Externo</h1>
+    <form id="ciclo-form">
+        <!-- Campos do formulário -->
+        <label for="frota">Frota:</label>
+        <input type="number" id="frota" required><br>
+
+        <label for="configuracao">Configuração:</label>
+        <select id="configuracao">
+            <option value="Bemiado">Bemiado</option>
+            <option value="Tremiado">Tremiado</option>
+        </select><br>
+
+        <label for="marcaModelo">Marca/Modelo:</label>
+        <select id="marcaModelo">
+            <option value="MB 3344">MB 3344</option>
+            <option value="Scania XT 560 S">Scania XT 560 S</option>
+            <option value="Volvo FH 540">Volvo FH 540</option>
+        </select><br>
+
+        <label for="odometroInicial">Odômetro Inicial:</label>
+        <input type="number" id="odometroInicial" required><br>
+
+        <label for="saidaBalancaVazio">Saída Balança Vazio:</label>
+        <button type="button" id="saidaBalancaVazio" onclick="registrarDataHora('saidaBalancaVazio')">Registrar</button><br>
+
+        <label for="despacho">Despacho:</label>
+        <input type="number" id="despacho" required><br>
+
+        <label for="chegadaBatedor">Chegada Batedor:</label>
+        <button type="button" id="chegadaBatedor" onclick="registrarDataHora('chegadaBatedor')">Registrar</button><br>
+
+        <label for="tipoCarregamento">Tipo de Carregamento:</label>
+        <select id="tipoCarregamento">
+            <option value="Sobre Rodas">Sobre Rodas</option>
+            <option value="Troca de Conjunto">Troca de Conjunto</option>
+        </select><br>
+
+        <label for="saidaBatedor">Saída Batedor:</label>
+        <button type="button" id="saidaBatedor" onclick="registrarDataHora('saidaBatedor')">Registrar</button><br>
+
+        <label for="chegadaBalanca">Chegada Balança Carregado:</label>
+        <button type="button" id="chegadaBalanca" onclick="registrarDataHora('chegadaBalanca')">Registrar</button><br>
+
+        <label for="odometroFinal">Odômetro Final:</label>
+        <input type="number" id="odometroFinal" required><br>
+
+        <button type="button" id="enviarDados" onclick="enviarDados()">Enviar Dados</button>
+        <button type="button" id="iniciarNovo" onclick="iniciarNovo()">Iniciar Novo</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
