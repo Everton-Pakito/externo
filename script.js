@@ -1,4 +1,3 @@
-
 let cicloData = {
     frota: null,
     configuracao: null,
@@ -40,7 +39,13 @@ function enviarDados() {
         }
     })
     .then(response => response.json())
-    .then(data => alert('Dados enviados com sucesso!'))
+    .then(data => {
+        if (data.result === "sucesso") {
+            alert('Dados enviados com sucesso!');
+        } else {
+            alert('Erro ao enviar dados: ' + data.message);
+        }
+    })
     .catch(error => alert('Erro ao enviar dados: ' + error));
 }
 
