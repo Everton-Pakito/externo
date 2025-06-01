@@ -1,27 +1,18 @@
-let cicloData = {
-    frota: null,
-    configuracao: null,
-    marcaModelo: null,
-    odometroInicial: null,
-    saidaBalancaVazio: null,
-    despacho: null,
-    chegadaBatedor: null,
-    tipoCarregamento: null,
-    saidaBatedor: null,
-    chegadaBalanca: null,
-    odometroFinal: null
-};
-
-// Função para registrar data e hora nos campos de botão
-function registrarDataHora(campo) {
-    let dataHoraAtual = new Date().toLocaleString();
-    document.getElementById(campo).innerText = `Registrado: ${dataHoraAtual}`;
-    cicloData[campo] = dataHoraAtual;
-    document.getElementById(campo).disabled = true;
+function validarFormulario() {
+    // Verifica se os campos obrigatórios estão preenchidos
+    const requiredFields = ['frota', 'odometroInicial', 'despacho', 'odometroFinal'];
+    for (let field of requiredFields) {
+        if (document.getElementById(field).value === '') {
+            alert(`Por favor, preencha o campo: ${field}`);
+            return false;
+        }
+    }
+    return true;
 }
 
-// Enviar dados para o Google Sheets
 function enviarDados() {
+    if (!validarFormulario()) return;
+
     cicloData.frota = document.getElementById('frota').value;
     cicloData.configuracao = document.getElementById('configuracao').value;
     cicloData.marcaModelo = document.getElementById('marcaModelo').value;
@@ -30,7 +21,10 @@ function enviarDados() {
     cicloData.tipoCarregamento = document.getElementById('tipoCarregamento').value;
     cicloData.odometroFinal = document.getElementById('odometroFinal').value;
 
-    // Enviar os dados para o Google Sheets
+    // Adiciona um feedback visual de carregamento
+    document.getElementById('enviarDados').disabled = true;
+    document.getElementById('enviarDados').innerText = "Enviando...";
+
     fetch('https://script.google.com/macros/s/AKfycbwblllxtzcxOxQJhXcSUFmFWxPGERXj3kGCMajepWVdhXDMdMRZI0G7dpz6A8LHsG_i/exec', {
         method: 'POST',
         body: JSON.stringify(cicloData),
@@ -45,29 +39,12 @@ function enviarDados() {
         } else {
             alert('Erro ao enviar dados: ' + data.message);
         }
+        document.getElementById('enviarDados').disabled = false;
+        document.getElementById('enviarDados').innerText = "Enviar Dados";
     })
-    .catch(error => alert('Erro ao enviar dados: ' + error));
-}
-
-// Iniciar um novo ciclo (limpar os dados do formulário)
-function iniciarNovo() {
-    document.getElementById('ciclo-form').reset();
-    cicloData = {
-        frota: null,
-        configuracao: null,
-        marcaModelo: null,
-        odometroInicial: null,
-        saidaBalancaVazio: null,
-        despacho: null,
-        chegadaBatedor: null,
-        tipoCarregamento: null,
-        saidaBatedor: null,
-        chegadaBalanca: null,
-        odometroFinal: null
-    };
-
-    // Reabilitar os botões
-    document.querySelectorAll('button').forEach(button => {
-        button.disabled = false;
+    .catch(error => {
+        alert('Erro ao enviar dados: ' + error);
+        document.getElementById('enviarDados').disabled = false;
+        document.getElementById('enviarDados').innerText = "Enviar Dados";
     });
 }

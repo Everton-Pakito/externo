@@ -1,119 +1,18 @@
-/* Definindo as variáveis de cores */
-:root {
-    --primary-color: #4CAF50;  /* Verde */
-    --secondary-color: #f1f1f1;  /* Cinza claro */
-    --accent-color: #ff9800;  /* Laranja */
-    --border-color: #ddd;  /* Cor das bordas */
-    --text-color: #333;  /* Cor do texto */
-    --background-color: #f7f7f7;  /* Cor de fundo da página */
+/* Melhorar os botões em dispositivos menores */
+@media (max-width: 768px) {
+    button {
+        font-size: 1rem;  /* Aumenta o tamanho dos botões em telas pequenas */
+        padding: 14px;
+    }
+
+    input, select {
+        font-size: 1rem;  /* Ajuste do tamanho de fontes */
+    }
 }
 
-/* Estilo geral do body */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-}
-
-/* Título principal */
-h1 {
-    text-align: center;
-    color: var(--primary-color);
-    margin-top: 30px;
-    font-size: 2.5rem;
-}
-
-/* Container do formulário */
-form {
-    background-color: white;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
-}
-
-/* Estilo dos campos de entrada (input, select, button) */
-input, select, button {
-    width: 100%;
-    padding: 12px;
-    margin: 12px 0;
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
-    font-size: 1rem;
-}
-
-/* Cor de fundo e estilo dos campos de entrada */
-input, select {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-}
-
-/* Botão de envio */
-button {
-    background-color: var(--primary-color);
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Efeito de hover no botão */
-button:hover {
-    background-color: var(--accent-color);
-}
-
-/* Estilo para botões desabilitados */
+/* Ajustar a exibição de ícones de carregamento ou botões */
 button:disabled {
     background-color: #bdbdbd;
     cursor: not-allowed;
-}
-
-/* Estilo das labels (rótulos dos campos) */
-label {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: var(--primary-color);
-    display: block;
-}
-
-/* Estilos para o formulário em telas menores */
-@media (max-width: 768px) {
-    form {
-        width: 90%;
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    input, select, button {
-        font-size: 0.9rem;
-    }
-}
-
-/* Estilos para telas muito pequenas (dispositivos móveis) */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    form {
-        padding: 15px;
-    }
-
-    input, select, button {
-        font-size: 0.85rem;
-    }
-}
-
-/* Ajustes finais e estilo de botões inline */
-button[type="button"] {
-    width: auto;
-    display: inline-block;
-    margin-right: 10px;
+    transition: background-color 0.3s ease;
 }
