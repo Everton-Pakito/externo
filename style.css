@@ -1,27 +1,108 @@
-
-body {
-    font-family: Arial, sans-serif;
+/* Definindo as cores e fontes principais */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #f1f1f1;
+    --accent-color: #ff9800;
+    --border-color: #ddd;
+    --text-color: #333;
 }
 
+/* Estilo geral do body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Título principal */
 h1 {
     text-align: center;
+    color: var(--primary-color);
+    margin-top: 30px;
+    font-size: 2.5rem;
 }
 
+/* Container do formulário */
 form {
-    max-width: 600px;
-    margin: 0 auto;
+    background-color: white;
+    max-width: 800px;
+    margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo dos campos de entrada */
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+}
+
+/* Cores dos campos e botões */
+input, select {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 button {
-    padding: 10px 20px;
-    margin-top: 10px;
+    background-color: var(--primary-color);
+    color: white;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
+/* Efeito de hover para os botões */
+button:hover {
+    background-color: var(--accent-color);
+}
+
+/* Desabilitar os botões */
 button:disabled {
-    background-color: grey;
+    background-color: #bdbdbd;
     cursor: not-allowed;
+}
+
+/* Label dos campos */
+label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+    display: block;
+}
+
+/* Estilos de layout responsivo */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Estilo para o formulário em telas pequenas */
+@media (max-width: 480px) {
+    input, select, button {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Botão centralizado no final */
+button[type="button"] {
+    width: auto;
+    display: inline-block;
+    margin-right: 10px;
 }
